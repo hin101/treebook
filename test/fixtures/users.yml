@@ -5,3 +5,9 @@ hinesh:
   last_name: "Patel"
   email: "test@test.com"
   profile_name: "hineshpatel"
+
+bob:
+  first_name: "Bob"
+  last_name: "Patel"
+  email: "bob@test.com"
+  profile_name: "bobpatel"
