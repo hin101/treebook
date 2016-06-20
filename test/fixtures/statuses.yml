@@ -1,13 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
   content: MyText
-  user: hinesh
+  user: jason
 
 two:
   content: MyText
-  user: hinesh
+  user: jason
 
 three:
-  content: MyText
-  user: bob
+  content: My status
+  user: jim
