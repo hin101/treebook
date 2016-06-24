@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
   has_many :user_friendships
   has_many :friends, through: :user_friendships
 
+  def to_param
+    profile_name
+  end
+
   def full_name
   	first_name + " " + last_name
   end
