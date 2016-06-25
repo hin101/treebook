@@ -11,6 +11,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'minitest'
 gem 'test-unit'
+gem 'state_machine'
 
 group :development, :test do
 	gem 'sqlite3'
