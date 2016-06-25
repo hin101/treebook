@@ -33,7 +33,7 @@ class UserFriendshipTest < ActiveSupport::TestCase
 
   context "#accept!" do
     setup do
-      @user_friendship = UserFriendship.new user: users(:jason), friend: users(:mike)
+      @user_friendship = UserFriendship.create user: users(:jason), friend: users(:mike)
     end
 
     should "set the state to accepted" do
@@ -51,6 +51,20 @@ class UserFriendshipTest < ActiveSupport::TestCase
       @user_friendship.accept!
       users(:jason).friends.reload
       assert users(:jason).friends.include?(users(:mike))
+    end
+  end
+
+  context ".request" do
+    should "create two user friendships" do
+      assert_difference "UserFriendship.count", 2 do
+        UserFriendship.request(users(:jason),users(:mike))
+      end
+    end
+
+    should "send a friend request email" do
+      assert_difference "ActionMailer::Base.deliveries.size", 1 do
+        UserFriendship.request(users(:jason),users(:mike))
+      end
     end
   end
 end
