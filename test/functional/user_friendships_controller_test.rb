@@ -216,8 +216,8 @@ class UserFriendshipsControllerTest < ActionController::TestCase
 			context "when logged in" do
 				setup do
 					@user_friendship = create(:pending_user_friendship, user: users(:jason))
-					sign_in users(:jason)
-					get :edit, id: @user_friendship
+        			sign_in users(:jason)
+        			get :edit, id: @user_friendship.friend.profile_name
 				end
 
 				should "get edit and return success" do
