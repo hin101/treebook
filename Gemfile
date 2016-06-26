@@ -12,6 +12,7 @@ gem 'simple_form'
 gem 'minitest'
 gem 'test-unit'
 gem 'state_machine'
+gem 'draper'
 
 group :development, :test do
 	gem 'sqlite3'
