@@ -22,26 +22,36 @@ class User < ActiveRecord::Base
 
   has_many :statuses
   has_many :user_friendships
-  has_many :friends, through: :user_friendships
-                       
+  has_many :friends, through: :user_friendships,
+                     conditions: { user_friendships: { state: 'accepted' } }
 
-  has_many :pending_user_friendships, class_name: 'UserFriendship', 
+  has_many :pending_user_friendships, class_name: 'UserFriendship',
                                       foreign_key: :user_id,
                                       conditions: { state: 'pending' }
-
   has_many :pending_friends, through: :pending_user_friendships, source: :friend
-  has_many :requested_user_friendships, class_name: 'UserFriendship', 
+  
+  has_many :requested_user_friendships, class_name: 'UserFriendship',
                                       foreign_key: :user_id,
                                       conditions: { state: 'requested' }
+  has_many :requested_friends, through: :requested_user_friendships, source: :friend
+  
+  has_many :blocked_user_friendships, class_name: 'UserFriendship',
+                                      foreign_key: :user_id,
+                                      conditions: { state: 'blocked' }
+  has_many :blocked_friends, through: :blocked_user_friendships, source: :friend
+  
+  has_many :accepted_user_friendships, class_name: 'UserFriendship',
+                                      foreign_key: :user_id,
+                                      conditions: { state: 'accepted' }
+  has_many :accepted_friends, through: :accepted_user_friendships, source: :friend
 
-  has_many :requested_friends, through: :pending_user_friendships, source: :friend
-
-  def to_param
-    profile_name
-  end
 
   def full_name
   	first_name + " " + last_name
+  end
+
+  def to_param
+    profile_name
   end
 
   def gravatar_url
@@ -51,17 +61,9 @@ class User < ActiveRecord::Base
 
     "http://gravatar.com/avatar/#{hash}"
   end
+
+  def has_blocked?(other_user)
+    blocked_friends.include?(other_user)
+  end
+
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
