@@ -11,8 +11,10 @@
     </div>
   <% end %>
   
-  <%= f.input :content %>
+  <%= f.input :content, input_html: { rows: 4, class: 'input-xxlarge' } %>
+
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to "Back", statuses_path, class: 'btn' %>
   </div>
 <% end %>
