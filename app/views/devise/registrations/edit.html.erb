@@ -13,6 +13,19 @@
   </fieldset>
 
   <fieldset>
+    <legend>Profile Picture</legend>
+    <%= f.input :avatar, as: :file %>
+    <% if f.object.avatar? %>
+      <div class="control-group">
+        <label class="control-label">Current avatar</label>
+        <div class="controls">
+          <%= image_tag f.object.avatar.url(:small) %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
     <legend>Update Password</legend>
     <%= f.input :password, hint: "Leave blank if you don't want to change it", input_html: { class: 'input-xxlarge', autocomplete: 'off' } %>
     <%= f.input :password_confirmation, input_html: { class: 'input-xxlarge', autocomplete: 'off' } %>
