@@ -20,7 +20,7 @@
           <%= link_to document_fields.object.attachment_file_name, document_fields.object.attachment.url %>
         </div>
       </div>
-      <%= document_fields.input :remove_attachment, as :boolean, label: "Remove attachment?" %>
+      <%= document_fields.input :remove_attachment, as: :boolean, label: "Remove attachment?" %>
     <% end %>
     <%= document_fields.input :attachment, as: :file %>
   <% end %>

@@ -20,10 +20,12 @@ class User < ActiveRecord::Base
                              message: 'Must be formatted correctly.'
                            }
 
+  has_many :albums
+  has_many :pictures
+
   has_many :statuses
   has_many :user_friendships
   has_many :friends, through: :user_friendships
- #                    conditions: { user_friendships: { state: 'accepted' } }
 
   has_many :pending_user_friendships, class_name: 'UserFriendship',
                                       foreign_key: :user_id,
@@ -67,6 +69,10 @@ class User < ActiveRecord::Base
 
   def to_param
     profile_name
+  end
+
+  def to_s
+    first_name
   end
 
   def gravatar_url

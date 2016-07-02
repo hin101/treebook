@@ -42,6 +42,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    commonjs (0.2.7)
     daemons (1.2.3)
     devise (3.5.10)
       bcrypt (~> 3.0)
@@ -73,6 +74,11 @@ GEM
       railties (>= 3.2)
       sprockets-rails
     json (1.8.3)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.6.0)
+      actionpack (>= 3.1)
+      less (~> 2.6.0)
     log_buddy (0.7.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -155,6 +161,11 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (3.2.2)
+      actionpack (>= 3.1)
+      execjs (>= 2.2.2, >= 2.2)
+      less-rails (>= 2.5.0)
+      railties (>= 3.1)
     tzinfo (0.3.50)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
@@ -183,6 +194,7 @@ DEPENDENCIES
   state_machine
   test-unit
   thin
+  twitter-bootstrap-rails
   uglifier (>= 1.0.3)
 
 BUNDLED WITH
