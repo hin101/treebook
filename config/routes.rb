@@ -1,5 +1,6 @@
 Treebook::Application.routes.draw do
 
+  resources :activities, only: [:index]
 
   as :user do
     get '/register', to: 'devise/registrations#new', as: :register

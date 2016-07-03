@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
                              message: 'Must be formatted correctly.'
                            }
 
+  has_many :activities
   has_many :albums
   has_many :pictures
 
@@ -85,6 +86,14 @@ class User < ActiveRecord::Base
 
   def has_blocked?(other_user)
     blocked_friends.include?(other_user)
+  end
+
+  def create_activity(item, action)
+    activity = activities.new
+    activity.targetable = item
+    activity.action = action
+    activity.save
+    activity
   end
 
 end
