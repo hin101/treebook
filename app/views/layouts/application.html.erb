@@ -18,7 +18,7 @@
 				<ul class="nav">
 					<li><%= link_to "All Statuses", feed_path %></li>
 					<% if user_signed_in? %>
-						<li><%= link_to "Activity Feed", activities_path %></li>
+						<li id="activity-feed"><%= link_to "Activity Feed", activities_path %></li>
 					<% end %>
 				</ul>
 				<ul class="nav pull-right">
@@ -48,4 +48,16 @@
 		<%= yield %>
 	</div>
 </body>
+
+<script id="activities-template" type="text/x-handlebars-template">
+	<a class="dropdown-toggle" href="#">Activity Feed ({{count}})</a>
+	<ul class="dropdown-menu">
+		{{#each activities}}
+			{{activityLink}}
+		{{/each}}
+		<li class="divider"></li>
+		<li><a href="{{activityFeedLink}}">Activity Feed</a></li>
+	</ul>
+</script>
+
 </html>
